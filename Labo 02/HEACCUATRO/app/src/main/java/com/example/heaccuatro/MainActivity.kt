@@ -70,14 +70,19 @@ fun AppListaNombres() {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(10.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
+                .padding(vertical = 8.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(text = "Listado de nombres y posición en la lista")
+            Text(
+                text = "Listado de nombres y posición en la lista",
+                modifier = Modifier.weight(1f),
+                style = MaterialTheme.typography.titleMedium
+            )
+
+            Spacer(modifier = Modifier.width(8.dp))
+
             Button(
-                onClick = {
-                    lista.clear()
-                }
+                onClick = { lista.clear() }
             ) {
                 Text(text = "Limpiar")
             }

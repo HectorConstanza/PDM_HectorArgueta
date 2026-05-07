@@ -14,8 +14,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun LightSensor () {
-    val lightValues = useSensor(Sensor.TYPE_LIGHT)
+fun GyroscopeSensor () {
+    val gyroscopeValues = useSensor(Sensor.TYPE_GYROSCOPE)
 
     Scaffold { innerPadding ->
         Column (
@@ -23,10 +23,10 @@ fun LightSensor () {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "Sensor de Luz", fontSize = 24.sp, fontWeight = FontWeight.Bold)
-            Text(text = "Intensidad:${lightValues[0]} lx", fontSize = 18.sp)
+            Text(text = "Giroscopio", fontSize = 24.sp, fontWeight = FontWeight.Bold)
+            Text(text = "X:${gyroscopeValues[0]}", fontSize = 18.sp)
+            Text(text = "Y:${gyroscopeValues[1]}", fontSize = 18.sp)
+            Text(text = "Z:${gyroscopeValues[2]}", fontSize = 18.sp)
         }
     }
 }
-
-

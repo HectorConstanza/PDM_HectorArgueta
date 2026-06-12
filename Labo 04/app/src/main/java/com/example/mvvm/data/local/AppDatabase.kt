@@ -3,11 +3,16 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.example.mvvm.data.model.UsuarioEntity
-@Database(entities = [UsuarioEntity::class], version = 1, exportSchema = false)
+import com.example.mvvm.model.Task
+
+@Database(entities = [UsuarioEntity::class, Task::class], version = 2, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun usuarioDao(): UsuarioDao
+    abstract fun taskDao(): TaskDao
 
     companion object {
         @Volatile
@@ -19,7 +24,9 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "labo04_database"
-                ).build()
+                )
+                    .fallbackToDestructiveMigration()
+                    .build()
                 INSTANCE = instance
                 instance
             }

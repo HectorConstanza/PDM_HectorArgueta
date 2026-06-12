@@ -26,6 +26,7 @@ fun TaskScreen(
 ) {
 
     var showDialog by remember { mutableStateOf(false) }
+    val taskList by taskViewModel.taskList.collectAsState()
 
     Scaffold(
         topBar = {
@@ -56,7 +57,7 @@ fun TaskScreen(
             modifier = Modifier.padding(paddingValues)
         ) {
 
-            items(taskViewModel.taskList) { task ->
+            items(taskList) { task ->
 
                 TaskCard(task)
 

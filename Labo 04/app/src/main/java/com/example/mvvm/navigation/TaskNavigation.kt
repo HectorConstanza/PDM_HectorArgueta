@@ -15,7 +15,9 @@ fun AppNavigation() {
 
     val navController = rememberNavController()
 
-    val taskViewModel: TaskViewModel = viewModel()
+    val taskViewModel: TaskViewModel = viewModel(
+        factory = TaskViewModel.Factory
+    )
 
     NavHost(
         navController = navController,

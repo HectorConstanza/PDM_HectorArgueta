@@ -1,6 +1,7 @@
 package com.example.mvvm.data.local
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -14,4 +15,7 @@ interface UsuarioDao {
 
     @Query("SELECT * FROM usuarios_table ORDER BY id DESC")
     fun obtenerUsuarios(): Flow<List<UsuarioEntity>>
+
+    @Delete
+    suspend fun deleteUsuario(usuario: UsuarioEntity)
 }
